@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida - Stiven Camaho</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            max-width: 800px;
+            background-color: #f0f8ff;
+            position: relative; 
+        }
+
+        .boton-volver {
+            display: inline-block;
+            background-color: #0f7ee6;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 20px; 
+            transition: background-color 0.3s;
+        }
+
+        .boton-volver:hover {
+            background-color: #0c67bd;
+        }
+
+
+        .container {
+            display: flex;
+            gap: 30px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .left-column {
+            width: 30%;
+            padding-right: 20px;
+        }
+
+        .right-column {
+            width: 70%;
+        }
+
+        .profile-pic {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: right;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            color: #2c3e50; 
+        }
+
+        p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        ul {
+            padding-left: 15px;
+            margin: 10px 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin: 5px 0;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-item {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            color: #2c3e50; 
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .skill-item {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .address {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="boton-volver">&larr; Volver Inicio</a>
+
+    <div class="container">
+        <div class="left-column">
+            <img src="https://png.pngtree.com/png-vector/20230903/ourlarge/pngtree-man-avatar-isolated-png-image_9935807.png" alt="Foto de perfil" class="profile-pic">
+
+            <h3>PERFIL</h3>
+            <p>Desarrollador de software con sólida formación en programación y desarrollo de aplicaciones web y de escritorio. Experiencia en el diseño, implementación y mantenimiento de sistemas eficientes y escalables.</p>
+
+            <h3>CONTACTO</h3>
+            <div class="contact-item">3168505115</div>
+            <div class="contact-item">stivencamaho@gmail.com</div>
+        </div>
+        <div class="right-column">
+            <h1>Stiven Camaho</h1>
+            <h2>Desarrollador de Software</h2>
+
+            <h3>EXPERIENCIA LABORAL</h3>
+            <p><strong>Desarrollador Full Stack</strong> - 2022 <br>
+            Desarrollo de aplicaciones web con React y Node.js. Implementación de APIs RESTful.</p>
+
+            <h3>EDUCACION</h3>
+            <p><strong>Ingeniería de Sistemas</strong> - 2018<br>
+            Cursos en programación, bases de datos y arquitectura de software.</p>
+            <p><strong>Tecnologo en analisis y desarrollo de software</strong> - 2018</p>
+
+            <h3>HABILIDADES</h3>
+            <ul>
+                <li>JavaScript, TypeScript</li>
+                <li>React, Node.js</li>
+                <li>Git, Docker</li>
+                <li>MySQL, MongoDB</li>
+            </ul>
+
+            <h3>HOBBIES</h3>
+            <ul>
+                <li>Ir al Gym</li>
+                <li>jugar con mi perro</li>
+                <li>jugar padel</li>
+            </ul>
+
+            <h3>IDIOMAS</h3>
+            <ul>
+                <li> Español (Nativo)</li>
+                <li> Inglés (Intermedio)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
