@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - STIVEN CAMACHO</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: block; 
+        }
+
+        /* --- ENCABEZADO --- */
+        header {
+            background-color: #f8f8f8;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            float: left;
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav {
+            float: right;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .hero-img-col {
+            width: 45%;
+            float: left;
+            text-align: center;
+        }
+
+        .hero-img-col img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-text-col {
+            width: 50%;
+            float: right;
+            padding-top: 20px;
+        }
+
+        .hero-text-col h2 {
+            color: #e74c3c;
+            font-size: 48px;
+            margin: 0 0 15px 0;
+        }
+
+        .hero-text-col p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .btn-red {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            float: left;
+        }
+
+        /* --- SECCIÓN FRASE --- */
+        .quote-section {
+            background-color: #ff5722;
+            color: white;
+            text-align: center;
+            padding: 70px 0;
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 500px;
+            border: 6px solid #fff;
+            margin: 0 auto 20px auto;
+        }
+
+        .quote-text {
+            font-size: 22px;
+            max-width: 850px;
+            margin: 0 auto 15px auto;
+        }
+
+        .author {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* --- SECCIÓN PROYECTOS (CORREGIDA PARA ALINEACIÓN) --- */
+        .projects {
+            padding: 60px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .projects h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            width: 23%;
+            float: left;
+            margin: 0 1%;
+            background: #fff;
+            border: 1px solid #eee;
+            box-sizing: border-box;
+            min-height: 420px; /* Asegura que todas las cajas midan lo mismo */
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px; /* Altura fija para la imagen */
+            object-fit: cover; /* Recorta la imagen para que encaje sin estirarse */
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            height: 45px; /* Altura fija para el título */
+            overflow: hidden;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+            height: 65px; /* Altura fija para la descripción */
+            overflow: hidden;
+        }
+
+        .btn-card {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 2px;
+            float: left;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 20px 0;
+            background-color: #333;
+            color: #999;
+            text-align: right;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="clearfix">
+        <div class="container">
+            <h1 class="logo">Stiven Camacho</h1>
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#">¿Quién soy?</a>
+                <a href="#">Proyectos</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero clearfix">
+        <div class="container">
+            <div class="hero-img-col">
+                <img src="https://media.gettyimages.com/id/154956399/es/foto/an%C3%B3nimo-silueta-frente.jpg?s=612x612&w=0&k=20&c=Uv3Ph38ma00Fs-Hq2jzMlWpHeXWV0drUW52z-ec_fkg=" alt="Ilustración" style="width:300px;">
+            </div>
+            <div class="hero-text-col">
+                <h2>¿Quién soy?</h2>
+                <p>Soy un estudiante del SENA y de la Universidad Santo Tomás que está cursando su tecnología e ingeniería enfocadas en el desarrollo de software.</p>
+                <a href="#" class="btn-red">Leer más</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section clearfix">
+        <div class="container">
+            <img src="https://wallpapers.com/images/hd/cartoon-profile-pictures-3opqz8op53khmhjp.jpg" alt="Stiven Camacho" class="avatar">
+            <p class="quote-text">
+                "Es un apasionado de la resolución de problemas que ve el código no solo como texto, sino como una herramienta para construir soluciones reales."
+            </p>
+            <div class="author">- Stiven Camacho</div>
+        </div>
+    </section>
+
+    <section class="projects clearfix">
+        <div class="container">
+            <h2>Mis proyectos</h2>
+            
+            <div class="project-card">
+                <img src="https://www.hoja-de-vida.co/wp-content/uploads/2025/09/hojas-de-vida-creadas-con-ia-ads.jpg" alt="P1">
+                <div class="card-content">
+                    <h3>Hoja de vida</h3>
+                    <p>Un resumen clave de la formación académica y experiencias laborales en formato profesional.</p>
+                    <a href="#" class="btn-card">Ver proyecto</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://developer.android.com/static/images/appwidgets/home.png" alt="P2">
+                <div class="card-content">
+                    <h3>Widget</h3>
+                    <p>Elemento digital funcional donde se representa el estado del clima en tiempo real.</p>
+                    <a href="#" class="btn-card">Ver proyecto</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://lamenteesmaravillosa.com/wp-content/uploads/2013/11/mascara-con-interrogantes-420x281.jpg?auto=webp&quality=7500&width=1920&crop=16:9,smart,safe&format=webp&optimize=medium&dpr=2&fit=cover&fm=webp&q=75&w=1920&h=1080" alt="P3">
+                <div class="card-content">
+                    <h3>¿Quién soy?</h3>
+                    <p>Página de identidad personal dedicada a mostrar el perfil de un desarrollador de software.</p>
+                    <a href="#" class="btn-card">Ver proyecto</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/008/646/504/small/three-question-marks-pop-up-scribble-on-green-background-free-video.jpg" alt="P4">
+                <div class="card-content">
+                    <h3>Proyecto 4</h3>
+                    <p>Próximo proyecto pendiente por desarrollar e implementar en el portafolio.</p>
+                    <a href="#" class="btn-card">Ver proyecto</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="clearfix">
+        <div class="container">
+            <p>&copy; 2026 Stiven Camacho. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
