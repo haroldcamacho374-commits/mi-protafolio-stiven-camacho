@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura Profesional</title>
+    
+    <style>
+        :root {
+            --primary-orange: #f18c22;
+            --dark-bg: #1a1a1a;
+            --text-gray: #555;
+            --border-light: #eee;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e0e0e0;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .invoice-container {
+            width: 850px;
+            background: #fff;
+            min-height: 1100px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .invoice-header {
+            background-color: var(--dark-bg);
+            color: #fff;
+            padding: 50px;
+            position: relative;
+            height: 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .invoice-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 280px;
+            width: 120px;
+            height: 100%;
+            background: #fff;
+            transform: skew(-30deg);
+            z-index: 0;
+        }
+
+        .invoice-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 250px;
+            width: 40px;
+            height: 100%;
+            background: var(--primary-orange);
+            transform: skew(-30deg);
+            z-index: 0;
+        }
+
+        .logo-section, .invoice-title {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            background: var(--primary-orange);
+            color: white;
+            width: 50px;
+            height: 50px;
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .company-name {
+            display: block;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .slogan {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: #ccc;
+        }
+
+        .invoice-title {
+            text-align: right;
+        }
+
+        .invoice-title h1 {
+            font-size: 48px;
+            color: var(--primary-orange);
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .invoice-meta p {
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .invoice-meta span {
+            font-weight: 300;
+        }
+
+        .info-section {
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h3 {
+            font-size: 15px;
+            color: var(--primary-orange);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .bill-to h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .info-section p, .payment-method p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+
+        .payment-method span {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Tabla de Ítems */
+        .items-table {
+            width: calc(100% - 100px);
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .items-table thead th {
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .items-table tbody td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            color: #444;
+        }
+
+        .items-table tbody tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        .text-center { text-align: center !important; }
+        .text-right { text-align: right !important; }
+
+        /* Totales */
+        .summary-section {
+            padding: 40px 50px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .totals-box {
+            width: 320px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 15px;
+        }
+
+        .grand-total {
+            margin-top: 15px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* Nueva sección de pie de página (Imagen) */
+        .footer-section {
+            padding: 0 50px 40px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .terms-conditions {
+            width: 60%;
+        }
+
+        .terms-conditions p {
+            font-size: 11px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .signature-area {
+            text-align: center;
+            width: 250px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #ccc;
+            margin-top: 40px;
+            padding-top: 10px;
+        }
+
+        .signature-area p {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .signature-area span {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .bottom-bar {
+            height: 40px;
+            background: var(--dark-bg);
+            position: relative;
+            margin-top: auto;
+        }
+
+        .bottom-bar::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            width: 100px;
+            height: 100%;
+            background: var(--primary-orange);
+            transform: skew(-30deg);
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .invoice-container { box-shadow: none; margin: 0; width: 100%; }
+            .invoice-header { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invoice-container">
+        <header class="invoice-header">
+            <div class="logo-section">
+                <div class="logo-icon">Z</div>
+                <div class="logo-text">
+                    <span class="company-name">COMPAÑÍA</span>
+                    <span class="slogan">ESLOGAN</span>
+                </div>
+            </div>
+            <div class="invoice-title">
+                <h1>FACTURA</h1>
+                <div class="invoice-meta">
+                    <p>Número de Factura: <span>#001234</span></p>
+                    <p>Nº de Cuenta: <span>1234 5678 901</span></p>
+                    <p>Fecha de Emisión: <span>10 de abril, 2026</span></p>
+                </div>
+            </div>
+        </header>
+
+        <section class="info-section">
+            <div class="bill-to">
+                <h3>FACTURAR A:</h3>
+                <h2>Stiven Camacho</h2>
+                <p>Director, Compañía</p>
+                <p>Celular: +57 315 399 3704</p>
+                <p>Correo: haroldcamacho374@mail.com</p>
+            </div>
+            <div class="payment-method">
+                <h3>Método de Pago</h3>
+                <p>Número de cuenta: <span>1234 5678 901</span></p>
+                <p>Nombre del titular: <span>Harold Camacho</span></p>
+                <p>Tipo de cuenta: <span>Bancolombia</span></p>
+            </div>
+        </section>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th width="15%">FECHA</th>
+                    <th width="45%">DESCRIPCIÓN</th>
+                    <th width="15%" class="text-center">PRECIO</th>
+                    <th width="10%" class="text-center">CANT.</th>
+                    <th width="15%" class="text-right">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>07 abr, 2026</td>
+                    <td>Diseño de tarjetas de presentación</td>
+                    <td class="text-center">$300</td>
+                    <td class="text-center">3</td>
+                    <td class="text-right">$600.00</td>
+                </tr>
+                <tr>
+                    <td>07 abr, 2026</td>
+                    <td>Diseño de volante de frutas</td>
+                    <td class="text-center">$450</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">$450.00</td>
+                </tr>
+                <tr>
+                    <td>07 abr, 2026</td>
+                    <td>Diseño de Interfaz de Aplicación</td>
+                    <td class="text-center">$300</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">$300.00</td>
+                </tr>
+                <tr>
+                    <td>07 abr, 2026</td>
+                    <td>Desarrollo de Plantilla (Theme)</td>
+                    <td class="text-center">$150</td>
+                    <td class="text-center">3</td>
+                    <td class="text-right">$450.00</td>
+                </tr>
+                <tr>
+                    <td>07 abr, 2026</td>
+                    <td>Diseño de Identidad de Marca</td>
+                    <td class="text-center">$150</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">$150.00</td>
+                </tr>
+                <tr>
+                    <td>07 abr, 2026</td>
+                    <td>Diseño de Logotipo Creativo</td>
+                    <td class="text-center">$200</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">$200.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary-section">
+            <div class="totals-box">
+                <div class="total-row"><span>Subtotal:</span> <span>$2150.00</span></div>
+                <div class="total-row"><span>Descuento:</span> <span>$0.00</span></div>
+                <div class="total-row"><span>Impuesto (10%):</span> <span>$215.00</span></div>
+                <div class="grand-total">
+                    <span>Total:</span> <span>$2365.00</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="footer-section">
+            <div class="terms-conditions">
+                <h3>Términos & Condiciones:</h3>
+                <p>El pago debe completarse antes de la fecha de vencimiento. Los cheques deben hacerse a nombre de [Tu Nombre o Empresa]. Gracias por su confianza y por elegir nuestros servicios..</p>
+            </div>
+            <div class="signature-area">
+                <div class="signature-line">
+                    <p>Su Nombre y Firma</p>
+                    <span>Gerente de Cuenta</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="bottom-bar"></div>
+    </div>
+
+</body>
+</html>
