@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.18.1/axios.js"></script>
+    <title>Tarjeta de Identificación por Secciones</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .id-card {
+            background-color: #ffffff;
+            width: 620px;
+            border: 4px solid #d1192c;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: #a70a0a;
+            color: #ffffff;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .columns-container {
+            width: 100%;
+        }
+
+        .left-column {
+            width: 32%;
+            vertical-align: top;
+            text-align: center;
+            padding-right: 15px;
+        }
+
+        .left-column img {
+            width: 100%;
+            max-width: 140px;
+            height: 160px;
+            object-fit: cover;
+            border: 3px solid #c2621d;
+            border-radius: 8px;
+        }
+
+        .signature-box {
+            margin-top: 15px;
+            border-top: 2px solid #f2f847;
+            padding-top: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-style: italic;
+            color: #2b4c7e;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .right-column {
+            width: 68%;
+            vertical-align: top;
+            padding-left: 10px;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            color: #ffffff;
+            background-color: #ebf067;
+            padding: 4px 8px;
+            margin: 12px 0 6px 0;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid #2b4c7e;
+            padding-bottom: 2px;
+            color: #2b4c7e;
+        }
+
+        .info-list li h1 {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.68rem;
+            letter-spacing: 0.5px;
+            color: #1e293b;
+            margin: 0 0 1px 0;
+            font-weight: bold;
+        }
+
+        .info-list li span {
+            font-size: 0.88rem;
+            font-weight: 600;
+            word-break: break-all; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="id-card">
+        <div class="card-header">
+            Tarjeta de Identificación
+        </div>
+
+        <div class="card-body">
+            <table class="columns-container">
+                <tr>
+                    <td class="left-column">
+                        <img id="perfil" alt="Foto de perfil">
+                        <div class="signature-box" id="firma">
+                            Firma del titular
+                        </div>
+                    </td>
+
+                    <td class="right-column">
+                        
+                        <h1 class="section-title">Datos Personales</h1>
+                        <ul class="info-list">
+                            <li>
+                                <h1>ID / Documento</h1>
+                                <span id="documento"></span>
+                            </li>
+                            <li>
+                                <h1>Nombre Completo</h1>
+                                <span id="nombre"></span>
+                            </li>
+                            <li>
+                                <h1>Fecha de Nacimiento y Edad</h1>
+                                <span id="nacimiento"></span>
+                            </li>
+                            <li>
+                                <h1>Género</h1>
+                                <span id="genero"></span>
+                            </li>
+                        </ul>
+
+                        <h1 class="section-title">Ubicación</h1>
+                        <ul class="info-list">
+                            <li>
+                                <h1>Dirección</h1>
+                                <span id="direccion"></span>
+                            </li>
+                            <li>
+                                <h1>Ciudad</h1>
+                                <span id="ciudad"></span>
+                            </li>
+                            <li>
+                                <h1>Estado / Provincia</h1>
+                                <span id="estado"></span>
+                            </li>
+                            <li>
+                                <h1>País</h1>
+                                <span id="pais"></span>
+                            </li>
+                            <li>
+                                <h1>Código Postal</h1>
+                                <span id="codigo-postal"></span>
+                            </li>
+                        </ul>
+
+                        <h1 class="section-title">Contacto</h1>
+                        <ul class="info-list">
+                            <li>
+                                <h1>Correo Electrónico</h1>
+                                <span id="email"></span>
+                            </li>
+                            <li>
+                                <h1>Teléfono Fijo</h1>
+                                <span id="telefono"></span>
+                            </li>
+                            <li>
+                                <h1>Celular</h1>
+                                <span id="celular"></span>
+                            </li>
+                        </ul>
+
+                        <h1 class="section-title">Cuenta</h1>
+                        <ul class="info-list">
+                            <li>
+                                <h1>Usuario</h1>
+                                <span id="usuario-login"></span>
+                            </li>
+                            <li>
+                                <h1>UUID / ID Sistema</h1>
+                                <span id="uuid"></span>
+                            </li>
+                            <li>
+                                <h1>Antigüedad de la Cuenta</h1>
+                                <span id="registro"></span>
+                            </li>
+                        </ul>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                let res = await axios.get("https://randomuser.me/api/");
+                let usuario = res.data.results[0];
+
+                document.getElementById("perfil").src = usuario.picture.large;
+
+                document.getElementById("documento").textContent = usuario.id.value ? usuario.id.value : "ID-984012";
+                document.getElementById("nombre").textContent = `${usuario.name.title} ${usuario.name.first} ${usuario.name.last}`;
+                
+                let fechaNac = new Date(usuario.dob.date).toLocaleDateString();
+                document.getElementById("nacimiento").textContent = `${fechaNac} (${usuario.dob.age} años)`;
+                document.getElementById("genero").textContent = usuario.gender === 'female' ? 'Femenino' : 'Masculino';
+
+                document.getElementById("direccion").textContent = `${usuario.location.street.name} #${usuario.location.street.number}`;
+                document.getElementById("ciudad").textContent = usuario.location.city;
+                document.getElementById("estado").textContent = usuario.location.state;
+                document.getElementById("pais").textContent = usuario.location.country;
+                document.getElementById("codigo-postal").textContent = usuario.location.postcode;
+
+                document.getElementById("email").textContent = usuario.email;
+                document.getElementById("telefono").textContent = usuario.phone;
+                document.getElementById("celular").textContent = usuario.cell;
+
+                document.getElementById("usuario-login").textContent = `@${usuario.login.username}`;
+                document.getElementById("uuid").textContent = usuario.login.uuid;
+                document.getElementById("registro").textContent = `${usuario.registered.age} años registrado`;
+
+                document.getElementById("firma").textContent = `${usuario.name.first} ${usuario.name.last}`;
+
+            } catch (error) {
+                console.error("Error al obtener los datos:", error);
+            }
+        });
+    </script>
+
+</body>
+</html>

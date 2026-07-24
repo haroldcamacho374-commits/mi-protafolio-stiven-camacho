@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <ul id="lista">
+
+        </ul>
+        <input type="text" id="titulo"><br>
+        <input type="text" id="des"><br>
+        <button onclick="agregar()">Agregar</button>
+    </div>
+
+
+    <script>
+        const actividades = [
+            {
+                id: 1,
+                titulo: "Estructura semántica HTML",
+                descripcion: "Crear una página usando etiquetas semánticas como header, nav, main, section, article y footer con contenido real."
+            },
+            {
+                id: 2,
+                titulo: "Formulario de registro",
+                descripcion: "Diseñar un formulario con inputs de texto, email, password, select y botón de envío con validación básica en HTML."
+            },
+            {
+                id: 3,
+                titulo: "Modelo de caja CSS",
+                descripcion: "Aplicar margin, padding, border y box-sizing a un conjunto de tarjetas para comprender el flujo del documento."
+            },
+            {
+                id: 4,
+                titulo: "Layout con Flexbox",
+                descripcion: "Construir una barra de navegación y una sección de cards usando display flex, justify-content y align-items."
+            },
+            {
+                id: 5,
+                titulo: "Layout con CSS Grid",
+                descripcion: "Maquetar una página con encabezado, dos columnas de contenido y pie de página usando grid-template-areas."
+            },
+            {
+                id: 6,
+                titulo: "Variables CSS y temas",
+                descripcion: "Definir una paleta de colores con custom properties en :root y aplicarlas consistentemente en toda la página."
+            },
+            {
+                id: 7,
+                titulo: "Diseño responsivo con media queries",
+                descripcion: "Adaptar un layout de escritorio a móvil usando breakpoints en 768px y 480px con enfoque mobile-first."
+            },
+            {
+                id: 8,
+                titulo: "Manipulación del DOM",
+                descripcion: "Seleccionar elementos con querySelector, modificar su contenido con textContent e innerHTML y cambiar estilos dinámicamente."
+            },
+            {
+                id: 9,
+                titulo: "Eventos en JavaScript",
+                descripcion: "Capturar eventos de click, submit e input usando addEventListener para crear interacciones en la interfaz."
+            },
+            {
+                id: 10,
+                titulo: "CRUD con array en memoria",
+                descripcion: "Implementar las operaciones crear, leer, actualizar y eliminar sobre un array de objetos pintado en una tabla HTML."
+            }
+        ];
+
+        let lista = document.getElementById("lista")
+        let titulo = document.getElementById("titulo")
+        let d = document.getElementById("des")
+        /* let html = ""
+
+        actividades.forEach((item,i)=>{
+            html+=`
+                <li>${item.id} - ${item.titulo} - ${item.descripcion}</li>
+            `
+        })
+
+        lista.innerHTML = html */
+
+        document.addEventListener("DOMContentLoaded", ()=>{
+            pintarlista()
+        })
+
+        function pintarlista() {
+            lista.innerHTML = ""
+            actividades.forEach((item, ind) => {
+                const itemlista = document.createElement("li")
+                itemlista.textContent = item.id + " - " + item.titulo
+                lista.appendChild(itemlista)
+            })
+        }
+
+        function agregar(){
+            actividades.push({
+                id:123,
+                titulo:titulo.value,
+                descripcion:d.value
+            })
+            console.log(actividades);
+            pintarlista()
+        }
+
+    </script>
+</body>
+
+</html>
